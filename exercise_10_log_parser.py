@@ -14,7 +14,7 @@ def parse_log(filename):
             if ":" not in linea:
                 raise ValueError("invalid log line")
 
-            nivel, mensaje = linea.split(":")
+            nivel, mensaje = linea.split(":", 1)
 
             nivel = nivel.strip()
             mensaje = mensaje.strip()
