@@ -1,31 +1,18 @@
-# Ejercicio 2 - Contar palabras en un archivo
-
-
 def count_words(filename):
-    """
-    Lee un archivo y retorna un diccionario palabra -> cantidad.
 
-    Reglas:
-    - Las palabras se separan por espacios en blanco (cualquier tipo:
-      espacios, tabs, saltos de línea). El método .split() sin argumentos
-      ya maneja eso.
-    - El conteo es case-insensitive: "Hola" y "hola" cuentan como la
-      misma palabra. En el diccionario final las claves están en
-      minúsculas.
-    - Si el archivo está vacío, retornar {}.
-    - Si el archivo no existe, propagar FileNotFoundError.
+    palabras = {}
 
-    Args:
-        filename: str - nombre del archivo a leer.
+    with open(filename, "r") as archivo:
 
-    Returns:
-        dict[str, int] - cada palabra (en minúscula) con su frecuencia.
+        for linea in archivo:
 
-    Raises:
-        FileNotFoundError: si el archivo no existe.
+            lista = linea.lower().split()
 
-    Ejemplo:
-        # archivo contiene: "Hola mundo hola\nmundo python\n"
-        count_words("texto.txt") -> {"hola": 2, "mundo": 2, "python": 1}
-    """
-    pass  # Reemplazar con tu implementación
+            for palabra in lista:
+
+                if palabra in palabras:
+                    palabras[palabra] += 1
+                else:
+                    palabras[palabra] = 1
+
+    return palabras
